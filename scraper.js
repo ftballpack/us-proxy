@@ -48,7 +48,7 @@ function fetchPage(url, callback) {
 }
 
 function run(db) {
-	fetchPage("https://www.us-proxy.org/", function(body) {
+	fetchPage("http://www.us-proxy.org/", function(body) {
 		var $ = cheerio.load(body);
 
 		var elements = $("#proxylisttable > tbody > tr");
