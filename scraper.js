@@ -1,35 +1,41 @@
-// This is a template for a Node.js scraper on morph.io (https://morph.io)
-
+var util = require("util");
 var cheerio = require("cheerio");
 var request = require("request");
 var sqlite3 = require("sqlite3").verbose();
 
 function initDatabase(callback) {
-	// Set up sqlite database.
 	var db = new sqlite3.Database("data.sqlite");
 	db.serialize(function() {
-		db.run("CREATE TABLE IF NOT EXISTS data (name TEXT)");
+		db.run("DROP TABLE data");
+		db.run("CREATE TABLE IF NOT EXISTS data (ip TEXT PRIMARY KEY, port INT, code TEXT, country TEXT, anonymity TEXT, google TEXT, https TEXT, lastchecked TEXT)");
 		callback(db);
 	});
 }
 
-function updateRow(db, value) {
-	// Insert some data.
-	var statement = db.prepare("INSERT INTO data VALUES (?)");
-	statement.run(value);
-	statement.finalize();
+function updateRow(db, ip, port, code, country, anonymity, google, https, lastchecked) {
+	var statementIn = db.prepare("INSERT OR IGNORE INTO data VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+	statementIn.run(ip, port, code, country, anonymity, google, https, lastchecked);
+	statementIn.finalize();
+
+	var statementUp = db.prepare("UPDATE data SET port = ?, code = ?, country = ?, anonymity = ?, google = ?, https = ?, lastchecked = ? WHERE ip LIKE ?");
+	statementUp.run(port, code, country, anonymity, google, https, lastchecked, ip);
+	statementUp.finalize();
+}
+
+function pad(str, max, char) {
+	str = str.toString();
+	return str.length < max ? pad(char + str, max, char) : str;
 }
 
 function readRows(db) {
-	// Read some data.
-	db.each("SELECT rowid AS id, name FROM data", function(err, row) {
-		console.log(row.id + ": " + row.name);
+	db.each("SELECT rowid AS id, ip, port, lastchecked FROM data", function(err, row) {
+		if (err) return console.log("Error", util.inspect(err));
+		console.log("[" + pad(row.id.toString(), 4, "0") + "] " + pad(row.ip + ":" + row.port, 21, " ") + " - " + new Date(row.lastchecked).toGMTString());
 	});
 }
 
 function fetchPage(url, callback) {
-	// Use request to read in pages.
-	request(url, function (error, response, body) {
+	request(url, function(error, response, body) {
 		if (error) {
 			console.log("Error requesting page: " + error);
 			return;
@@ -40,16 +46,45 @@ function fetchPage(url, callback) {
 }
 
 function run(db) {
-	// Use request to read in pages.
-	fetchPage("https://morph.io", function (body) {
-		// Use cheerio to find things in the page with css selectors.
+	fetchPage("https://www.us-proxy.org/", function(body) {
 		var $ = cheerio.load(body);
 
-		var elements = $("div.media-body span.p-name").each(function () {
-			var value = $(this).text().trim();
-			updateRow(db, value);
-		});
+		var elements = $("#proxylisttable > tbody > tr");
+		console.log("Found " + elements.length + " elements");
+		elements.each(function() {
+			var item = $(this).find("td");
 
+			var ip = $(item[0]).text();
+			var port = parseInt($(item[1]).text(), 10);
+			var code = $(item[2]).text();
+			var country = $(item[3]).text();
+			var anonymity = $(item[4]).text();
+			var google = $(item[5]).text();
+			var https = $(item[6]).text();
+
+			var d = new Date().getTime();
+			var reg = /(1 day|\d+? days)? ?(1 hour|\d+? hours)? ?(1 minute|\d+? minutes)? ?(1 second|\d+? seconds)? ago/i;
+			var last = $(item[7]).text();
+			if (reg.test(last)) {
+				var matches = last.match(reg);
+				if (matches[1] != undefined) {
+					d -= parseInt(matches[1], 10) * 24 * 60 * 60 * 1000;
+				}
+				if (matches[2] != undefined) {
+					d -= parseInt(matches[2], 10) * 60 * 60 * 1000;
+				}
+				if (matches[3] != undefined) {
+					d -= parseInt(matches[3], 10) * 60 * 1000;
+				}
+				if (matches[4] != undefined) {
+					d -= parseInt(matches[4], 10) * 1000;
+				}
+			}
+
+			var lastchecked = new Date(d).toJSON();
+
+			updateRow(db, ip, port, code, country, anonymity, google, https, lastchecked);
+		});
 		readRows(db);
 
 		db.close();
