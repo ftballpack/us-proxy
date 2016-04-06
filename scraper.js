@@ -1,3 +1,5 @@
+console.log("Hello!");
+
 var util = require("util");
 var cheerio = require("cheerio");
 var request = require("request");
@@ -50,7 +52,7 @@ function run(db) {
 		var $ = cheerio.load(body);
 
 		var elements = $("#proxylisttable > tbody > tr");
-		console.log("Found " + elements.length + " elements");
+		console.log(new Date().toGMTString(), "Found " + elements.length + " elements");
 		elements.each(function() {
 			var item = $(this).find("td");
 
