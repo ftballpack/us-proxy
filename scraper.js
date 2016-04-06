@@ -8,7 +8,7 @@ var sqlite3 = require("sqlite3").verbose();
 function initDatabase(callback) {
 	var db = new sqlite3.Database("data.sqlite");
 	db.serialize(function() {
-		db.run("DROP TABLE data");
+		//db.run("DROP TABLE data");
 		db.run("CREATE TABLE IF NOT EXISTS data (ip TEXT PRIMARY KEY, port INT, code TEXT, country TEXT, anonymity TEXT, google TEXT, https TEXT, lastchecked TEXT)");
 		callback(db);
 	});
