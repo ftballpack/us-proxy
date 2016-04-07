@@ -11,13 +11,11 @@ This is a scraper that runs on [Morph](https://morph.io/CookieMichal/us-proxy). 
 * http://free-proxy-list.net/anonymous-proxy.html
 
 ##Database format
-```SQL
-ip TEXT, port INT, type TEXT, code TEXT, country TEXT, anonymity TEXT, google TEXT, https TEXT, lastchecked TEXT
-```
-| ip | port | type | code | country | anonymity | google | https | lastchecked |
-|---|---|---|---|---|---|---|---|---|
-| text | integer | text | text | text | text | text | text | text |
-| "123.5.1.4" | 8080 | "free" | "[us](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Decoding_table)" | "United States" | "anonymous" | "yes" or "no" | "yes" or "no" | "[2016-03-29T17:34:54.814Z](https://en.wikipedia.org/wiki/ISO_8601)"
+
+| ip          | port    | type   | code    | country         | anonymity   | google        | https         | lastchecked                  |
+|-------------|---------|--------|---------|-----------------|-------------|---------------|---------------|------------------------------|
+| text        | integer | text   | text    | text            | text        | text          | text          | text                         |
+| "123.5.1.4" | 8080    | "free" | "[us]"    | "United States" | "anonymous" | "yes" or "no" | "yes" or "no" | "[2016-03-29T17:34:54.814Z]"   |
 
 ##Types of proxy servers
 * "free"
@@ -31,3 +29,6 @@ ip TEXT, port INT, type TEXT, code TEXT, country TEXT, anonymity TEXT, google TE
 * Level 1 - Elite Proxy / Highly Anonymous Proxy: The web server can't detect whether you are using a proxy.
 * Level 2 - Anonymous Proxy: The web server can know you are using a proxy, but it can't know your real IP.
 * Level 3 - Transparent Proxy: The web server can know you are using a proxy and it can also know your real IP.
+
+[us]: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Decoding_table
+[2016-03-29T17:34:54.814Z]:https://en.wikipedia.org/wiki/ISO_8601
