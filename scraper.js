@@ -119,11 +119,11 @@ function run(db) {
 	var scrappers = [];
 	scrappers.push(scrapper(db, "http://free-proxy-list.net/", "free"));
 	//skipped web proxies
-	scrappers.push(scrapper(db, "http://www.sslproxies.org/", "ssl"));
+	scrappers.push(scrapper(db, "http://sslproxies.org/", "ssl"));
 	scrappers.push(scrapper(db, "http://us-proxy.org/", "us"));
 	scrappers.push(scrapper(db, "http://free-proxy-list.net/uk-proxy.html", "uk"));
 	//skipped socks4/socks5
-	scrappers.push(scrapper(db, "http://www.google-proxy.net/", "google"));
+	scrappers.push(scrapper(db, "http://google-proxy.net/", "google"));
 	scrappers.push(scrapper(db, "http://free-proxy-list.net/anonymous-proxy.html", "anonymous"));
 
 	Promise.all(scrappers).then(function() {
