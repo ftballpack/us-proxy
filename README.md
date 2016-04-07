@@ -2,12 +2,11 @@
 This is a scraper that runs on [Morph](https://morph.io/CookieMichal/us-proxy). To get started see the [API](https://morph.io/documentation/api?scraper=CookieMichal%2Fus-proxy)
 
 ##Proxy lists used
-* https://www.us-proxy.org/
-* http://free-proxy-list.net/
-* http://www.sslproxies.org/
 * http://us-proxy.org/
+* http://sslproxies.org/
+* http://google-proxy.net/
+* http://free-proxy-list.net/
 * http://free-proxy-list.net/uk-proxy.html
-* http://www.google-proxy.net/
 * http://free-proxy-list.net/anonymous-proxy.html
 
 ##Database format
