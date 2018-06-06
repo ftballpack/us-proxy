@@ -132,7 +132,6 @@ function run(db) {
 	scrappers.push(scrapper(db, "http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=&offset=30", "us"));
 	scrappers.push(scrapper(db, "http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=&offset=45", "us"));
 	scrappers.push(scrapper(db, "http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=&offset=60", "us"));
-	//skipped socks4/socks5
 	scrappers.push(scrapper(db, "http://google-proxy.net/", "google"));
 	scrappers.push(scrapper(db, "http://free-proxy-list.net/anonymous-proxy.html", "anonymous"));
 	scrappers.push(scrapper(db, "http://google-proxy.net/", "google"));
