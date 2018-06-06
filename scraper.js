@@ -135,6 +135,15 @@ function run(db) {
 	//skipped socks4/socks5
 	scrappers.push(scrapper(db, "http://google-proxy.net/", "google"));
 	scrappers.push(scrapper(db, "http://free-proxy-list.net/anonymous-proxy.html", "anonymous"));
+	scrappers.push(scrapper(db, "http://google-proxy.net/", "google"));
+	scrappers.push(scrapper(db, "http://free-proxy-list.net/anonymous-proxy.html", "anonymous"));
+	scrappers.push(scrapper(db, "https://sockslist.net/proxy/server-socks-hide-ip-address/", "socks"));
+	scrappers.push(scrapper(db, "http://www.gatherproxy.com/sockslist", "socks"));
+	scrappers.push(scrapper(db, "http://www.gatherproxy.com/proxylist/country/?c=Canada", "canda"));
+	scrappers.push(scrapper(db, "http://www.gatherproxy.com/proxylist/country/?c=United%20States", "us"));
+	scrappers.push(scrapper(db, "http://www.gatherproxy.com/proxylist/country/?c=United%20Kingdom", "uk"));
+	scrappers.push(scrapper(db, "http://www.gatherproxy.com/proxylist/country/?c=Germany", "germany"));
+	scrappers.push(scrapper(db, "http://www.gatherproxy.com/proxylist/country/?c=Egypt", "middle east"));
 
 	Promise.all(scrappers).then(function() {
 		cleanUp(db).then(function() {
