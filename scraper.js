@@ -122,6 +122,16 @@ function run(db) {
 	scrappers.push(scrapper(db, "http://sslproxies.org/", "ssl"));
 	scrappers.push(scrapper(db, "http://us-proxy.org/", "us"));
 	scrappers.push(scrapper(db, "http://free-proxy-list.net/uk-proxy.html", "uk"));
+	scrappers.push(scrapper(db, "http://www.sslproxies24.top/", "ssl"));
+	scrappers.push(scrapper(db, "https://list.proxylistplus.com/SSL-List-1", "ssl"));
+	scrappers.push(scrapper(db, "http://newfreshproxies-24.blogspot.com/", "ssl"));
+	scrappers.push(scrapper(db, "https://www.cool-proxy.net/proxies/http_proxy_list/country_code:US/port:/anonymous:", "us"));
+	scrappers.push(scrapper(db, "http://www.freeproxylists.com/https/d1513006225.html", "us"));
+	scrappers.push(scrapper(db, "http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=&offset=0", "us"));
+	scrappers.push(scrapper(db, "http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=&offset=15", "us"));
+	scrappers.push(scrapper(db, "http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=&offset=30", "us"));
+	scrappers.push(scrapper(db, "http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=&offset=45", "us"));
+	scrappers.push(scrapper(db, "http://proxydb.net/?protocol=http&protocol=https&anonlvl=2&anonlvl=3&anonlvl=4&country=&offset=60", "us"));
 	//skipped socks4/socks5
 	scrappers.push(scrapper(db, "http://google-proxy.net/", "google"));
 	scrappers.push(scrapper(db, "http://free-proxy-list.net/anonymous-proxy.html", "anonymous"));
