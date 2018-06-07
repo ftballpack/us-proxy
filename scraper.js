@@ -143,6 +143,7 @@ function run(db) {
 	scrappers.push(scrapper(db, "http://www.gatherproxy.com/proxylist/country/?c=United%20Kingdom", "uk"));
 	scrappers.push(scrapper(db, "http://www.gatherproxy.com/proxylist/country/?c=Germany", "germany"));
 	scrappers.push(scrapper(db, "http://www.gatherproxy.com/proxylist/country/?c=Egypt", "middle east"));
+	scrappers.push(scrapper(db, "https://raw.githubusercontent.com/fate0/proxylist/master/proxy.list", "github"));
 
 	Promise.all(scrappers).then(function() {
 		cleanUp(db).then(function() {
