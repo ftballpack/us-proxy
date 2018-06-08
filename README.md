@@ -1,5 +1,5 @@
 #us-proxy
-This is a scraper that runs on [Morph](https://morph.io/CookieMichal/us-proxy). To get started see the [API](https://morph.io/documentation/api?scraper=CookieMichal%2Fus-proxy)
+This is a scraper that runs on [Morph](https://morph.io/ftballpack/us-proxy). To get started see the [API](https://morph.io/documentation/api?scraper=ftballpack%2Fus-proxy)
 
 ##Proxy lists used
 * http://us-proxy.org/
@@ -23,6 +23,7 @@ This is a scraper that runs on [Morph](https://morph.io/CookieMichal/us-proxy). 
 * "uk"
 * "google"
 * "anonymous"
+* "github"
 
 ##Types of proxy anonymity
 * Level 1 - Elite Proxy / Highly Anonymous Proxy: The web server can't detect whether you are using a proxy.
