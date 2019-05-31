@@ -1,5 +1,5 @@
-#us-proxy
-This is a scraper that runs on [Morph](https://morph.io/ftballpack/us-proxy). To get started see the [API](https://morph.io/documentation/api?scraper=ftballpack%2Fus-proxy)
+#public-proxy
+This is a scraper that runs on [Morph](https://morph.io/gbballpack/public-proxy). To get started see the [API](https://morph.io/documentation/api?scraper=gbballpack%2Fpublic-proxy)
 
 ##Proxy lists used
 * http://us-proxy.org/
@@ -8,6 +8,7 @@ This is a scraper that runs on [Morph](https://morph.io/ftballpack/us-proxy). To
 * http://free-proxy-list.net/
 * http://free-proxy-list.net/uk-proxy.html
 * http://free-proxy-list.net/anonymous-proxy.html
+  Among a continously changing list of proxy sources
 
 ##Database format
 
